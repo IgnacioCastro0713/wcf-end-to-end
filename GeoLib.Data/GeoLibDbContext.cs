@@ -25,10 +25,16 @@ namespace GeoLib.Data
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Ignore<IIdentifiableEntity>();
 
-            modelBuilder.Entity<ZipCode>().HasKey<int>(e => e.ZipCodeId).Ignore(e => e.EntityId)
-                .HasRequired(e => e.State).WithMany().HasForeignKey(e => e.StateId);
-
-            modelBuilder.Entity<State>().HasKey<int>(e => e.StateId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<ZipCode>()
+                .HasKey<int>(e => e.ZipCodeId)
+                .Ignore(e => e.EntityId)
+                .HasRequired(e => e.State)
+                .WithMany()
+                .HasForeignKey(e => e.StateId);
+            
+            modelBuilder.Entity<State>()
+                .HasKey<int>(e => e.StateId)
+                .Ignore(e => e.EntityId);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace GeoLib.Data
 
         public override IEnumerable<ZipCode> Get()
         {
-            using (GeoLibDbContext entityContext = new GeoLibDbContext())
+            using (var entityContext = new GeoLibDbContext())
             {
                 return entityContext.ZipCodeSet
                     .Include(e => e.State).ToFullyLoaded();
@@ -30,12 +30,11 @@ namespace GeoLib.Data
 
         public ZipCode GetByZip(string zip)
         {
-            using (GeoLibDbContext entityContext = new GeoLibDbContext())
+            using (var entityContext = new GeoLibDbContext())
             {
                 return entityContext.ZipCodeSet
                     .Include(e => e.State)
-                    .Where(e => e.Zip == zip)
-                    .FirstOrDefault();
+                    .FirstOrDefault(e => e.Zip == zip);
             }
         }
 

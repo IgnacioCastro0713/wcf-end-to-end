@@ -11,12 +11,12 @@ namespace GeoLib.Core
             where T : class, new()
             where U : class, new()
         {
-            List<PropertyInfo> sourceProperties = source.GetType().GetProperties().ToList<PropertyInfo>();
-            List<PropertyInfo> destinationProperties = destination.GetType().GetProperties().ToList<PropertyInfo>();
+            var sourceProperties = source.GetType().GetProperties().ToList<PropertyInfo>();
+            var destinationProperties = destination.GetType().GetProperties().ToList<PropertyInfo>();
 
-            foreach (PropertyInfo sourceProperty in sourceProperties)
+            foreach (var sourceProperty in sourceProperties)
             {
-                PropertyInfo destinationProperty = destinationProperties.Find(item => item.Name == sourceProperty.Name);
+                var destinationProperty = destinationProperties.Find(item => item.Name == sourceProperty.Name);
 
                 if (destinationProperty != null)
                 {

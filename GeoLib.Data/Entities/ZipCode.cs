@@ -22,8 +22,8 @@ namespace GeoLib.Data
 
         public int EntityId
         {
-            get { return ZipCodeId; }
-            set { ZipCodeId = value; }
+            get => ZipCodeId;
+            set => ZipCodeId = value;
         }
     }
 }

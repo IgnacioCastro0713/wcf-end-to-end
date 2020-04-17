@@ -14,8 +14,8 @@ namespace GeoLib.Data
 
         public int EntityId
         {
-            get { return StateId; }
-            set { StateId = value; }
+            get => StateId;
+            set => StateId = value;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace GeoLib.Data
 
         public State Get(string abbrev)
         {
-            using (GeoLibDbContext entityContext = new GeoLibDbContext())
+            using (var entityContext = new GeoLibDbContext())
             {
                 return entityContext.StateSet.FirstOrDefault(e => e.Abbreviation.ToUpper() == abbrev.ToUpper());
             }
@@ -29,7 +29,7 @@ namespace GeoLib.Data
 
         public IEnumerable<State> Get(bool primaryOnly)
         {
-            using (GeoLibDbContext entityContext = new GeoLibDbContext())
+            using (var entityContext = new GeoLibDbContext())
             {
                 return entityContext.StateSet.Where(e => e.IsPrimaryState == primaryOnly).ToFullyLoaded();
             }
